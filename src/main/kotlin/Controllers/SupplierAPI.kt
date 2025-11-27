@@ -5,7 +5,7 @@ import models.Supplier
 
 class SupplierAPI {
 
-    private val suppliers = mutableListOf<Supplier>()
+    private val suppliers = ArrayList<Supplier>()
 
     fun addSupplier(supplier: Supplier): Boolean { return suppliers.add(supplier) }
 
