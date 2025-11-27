@@ -5,7 +5,8 @@ import java.io.File
 
 class ProductAPI(private val supplierAPI: SupplierAPI) {
 
-    private val products = mutableListOf<Product>()
+    private val products = ArrayList<Product>()
+
 
     fun addProduct(product: Product): Boolean {return products.add(product)}
 
