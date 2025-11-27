@@ -4,20 +4,15 @@ import Controllers.ProductAPI
 import Controllers.SupplierAPI
 
 
-
-
 fun main() {
 
     val supplierAPI = SupplierAPI()
     val productAPI = ProductAPI(supplierAPI)
     var option: Int
 
-    supplierAPI.addSupplier(Supplier(2, "MeatWorld", "Sarah"))
 
-    productAPI.addProduct(Product(2, "Beef", 5.0, 2))
-
-    println(supplierAPI.getAllSuppliers())
-    println(productAPI.getAllProducts())
+                println(supplierAPI.getAllSuppliers())
+                println(productAPI.getAllProducts())
     do {
         println()
         println("1 Add Supplier")
@@ -34,30 +29,30 @@ fun main() {
         option = readln().toIntOrNull() ?: -1
 
         when (option) {
-            1->supplierAPI.addSupplieruser(supplierAPI)
-            2->productAPI.addProductuser(productAPI)
-            3-> supplierAPI.displaySuppliers(supplierAPI.getAllSuppliers())
-            4-> productAPI.displayProducts(productAPI.getAllProducts())
-            5-> productAPI.displayCheapProducts(productAPI.cheapProduct())
+            1->         supplierAPI.addSupplieruser(supplierAPI)
+            2->         productAPI.addProductuser(productAPI)
+            3->         supplierAPI.displaySuppliers(supplierAPI.getAllSuppliers())
+            4->         productAPI.displayProducts(productAPI.getAllProducts())
+            5->         productAPI.displayCheapProducts(productAPI.cheapProduct())
             6->  {
             print("Enter Supplier ID: ")
             val id = readln().toInt()
-            displayProductsWithTitle("Products from supplier $id:", productAPI.productsBySupplier(id))
+             displayProductsWithTitle("Products from supplier $id:", productAPI.productsBySupplier(id))
             }
             7 -> {
                 println("Enter product ID to delete among those: ")
-                productAPI.displayProducts(productAPI.getAllProducts())
+                        productAPI.displayProducts(productAPI.getAllProducts())
                 val id = readln().toInt()
-                println(productAPI.deleteProduct(id))
+                        println(productAPI.deleteProduct(id))
             }
             8 -> {
                 println("Enter supplier ID to delete among those: ")
-                supplierAPI.displaySuppliers(supplierAPI.getAllSuppliers())
-                val id = readln().toInt()
-                println(supplierAPI.deleteSupplier(id))
+                        supplierAPI.displaySuppliers(supplierAPI.getAllSuppliers())
+                 val id = readln().toInt()
+                        println(supplierAPI.deleteSupplier(id))
                     }
 
-            0 -> println("Exiting...")
+            0 -> println("Exiting_")
             else -> println("Invalid option")
         }
     } while (option != 0)
@@ -65,18 +60,13 @@ fun main() {
 }
 
 
-
-
-
-
-
 fun displayProductsWithTitle(title: String, list: List<Product>) {
     if (list.isEmpty()) {
         println("No products found.")
     } else {
         println(title)
-        for (p in list) {
-            println("${p.productId}. ${p.name} (€${p.cost}) — Supplier ID: ${p.supplierId}")
+        for (y in list) {
+            println("${y.productId}. ${y.name} (€${y.cost}) — Supplier ID: ${y.supplierId}")
         }
     }
 }

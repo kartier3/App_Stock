@@ -5,24 +5,10 @@ import models.Supplier
 
 class SupplierAPI {
 
-    private val suppliers = mutableListOf<Supplier>()
+    private val suppliers = ArrayList<Supplier>()
+
 
     fun addSupplier(supplier: Supplier): Boolean { return suppliers.add(supplier) }
-
-
-
-    fun getAllSuppliers(): List<Supplier> {return suppliers}
-    fun displaySuppliers(list: List<Supplier>) {
-        if (list.isEmpty()) {
-            println("No suppliers found.")
-        } else {
-            println("Suppliers:")
-            for (supplier in list) {
-                println("${supplier.supplierId}. ${supplier.name} - ${supplier.contact}")
-            }
-        }
-    }
-
 
     fun addSupplieruser(api: SupplierAPI) {
         print("Supplier ID: ")
@@ -34,7 +20,30 @@ class SupplierAPI {
         print("Contact: ")
         val contact = readln()
 
+        val newSupplier = Supplier(id, name, contact)
+        if (addSupplier(newSupplier)) {
+            println("Supplier added successfully!")
+        } else {
+            println("Failed to add supplier.")
+        }
     }
+
+    fun getAllSuppliers(): List<Supplier> {return suppliers}
+
+
+    fun displaySuppliers(list: List<Supplier>) {
+        if (list.isEmpty()) {
+            println("No suppliers")
+        } else {
+            println("Suppliers:")
+            val sortedList = list.sortedBy { it.supplierId }
+            for (supplier in sortedList) {
+                println("${supplier.supplierId} ${supplier.name}   ${supplier.contact}")
+            }
+        }
+    }
+
+
 
     fun deleteSupplier(id: Int): Boolean {
         getAllSuppliers()

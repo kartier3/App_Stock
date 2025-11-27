@@ -5,21 +5,12 @@ import java.io.File
 
 class ProductAPI(private val supplierAPI: SupplierAPI) {
 
-    private val products = mutableListOf<Product>()
+    private val products = ArrayList<Product>()
 
     fun addProduct(product: Product): Boolean {return products.add(product)}
 
-    fun getAllProducts(): List<Product> {return products }
-    fun displayProducts(list: List<Product>) {
-        if (list.isEmpty()) {
-            println("No products found.")
-        } else {
-            println("Products:")
-            for (p in list) {
-                println("${p.productId} ${p.name} (€${p.cost}) — Supplier ID: ${p.supplierId}")
-            }
-        }
-    }
+
+
 
     fun addProductuser(api: ProductAPI) {
         print("Product ID: ")
@@ -33,7 +24,31 @@ class ProductAPI(private val supplierAPI: SupplierAPI) {
 
         print("Supplier ID: ")
         val supplierId = readln().toInt()
+
+        val newProduct = Product(id, name, cost, supplierId)
+        if (addProduct(newProduct)) {
+            println("Product added successfully!")
+        } else {
+            println("Failed to add product.")
+        }
     }
+
+    fun getAllProducts(): List<Product> {return products }
+
+    fun displayProducts(list: List<Product>) {
+        if (list.isEmpty()) {
+            println("No products found.")
+        } else {
+            println("Products:")
+            val sortedList = list.sortedBy { it.productId }
+            for (y in sortedList) {
+                println("${y.productId} ${y.name} (€${y.cost}) — Supplier ID: ${y.supplierId}")
+            }
+        }
+    }
+
+
+
 
     val cheapProduct: () -> List<Product> = {
         val result = mutableListOf<Product>()
