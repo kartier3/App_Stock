@@ -9,32 +9,53 @@ class ProductAPI(private val supplierAPI: SupplierAPI) {
 
 
     fun addProduct(product: Product): Boolean {return products.add(product)}
+    fun addProductuser(api: ProductAPI) {
+        print("Product ID: ")
+        var id = readln().toInt()
+
+        while (productIdExists(id)) {
+            println("ID already exists. Enter a different ID:")
+            id = readln().toInt()
+        }
+
+        print("Name: ")
+        val name = readln()
+        print("Cost: ")
+        val cost = readln().toDouble()
+        print("Supplier ID: ")
+        var supplierId = readln().toInt()
+        val newProduct = Product(id, name, cost, supplierId)
+        val added = addProduct(newProduct)
+
+        if (added) {
+            println("Product added successfully!")
+        } else {
+            println("Failed to add product.")
+        }
+    }
+
+    fun productIdExists(id: Int): Boolean {
+        for (p in products) {
+            if (p.productId == id) return true
+        }
+        return false
+    }
 
     fun getAllProducts(): List<Product> {return products }
+
     fun displayProducts(list: List<Product>) {
         if (list.isEmpty()) {
             println("No products found.")
         } else {
             println("Products:")
-            for (p in list) {
-                println("${p.productId} ${p.name} (€${p.cost}) — Supplier ID: ${p.supplierId}")
+            val sortedList = list.sortedBy { it.productId }
+            for (product in list) {
+                println("${product.productId} ${product.name} (€${product.cost}) — Supplier ID: ${product.supplierId}")
             }
         }
     }
 
-    fun addProductuser(api: ProductAPI) {
-        print("Product ID: ")
-        val id = readln().toInt()
 
-        print("Name: ")
-        val name = readln()
-
-        print("Cost: ")
-        val cost = readln().toDouble()
-
-        print("Supplier ID: ")
-        val supplierId = readln().toInt()
-    }
 
     val cheapProduct: () -> List<Product> = {
         val result = mutableListOf<Product>()

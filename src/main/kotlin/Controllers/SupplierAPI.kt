@@ -9,24 +9,14 @@ class SupplierAPI {
 
     fun addSupplier(supplier: Supplier): Boolean { return suppliers.add(supplier) }
 
-
-
-    fun getAllSuppliers(): List<Supplier> {return suppliers}
-    fun displaySuppliers(list: List<Supplier>) {
-        if (list.isEmpty()) {
-            println("No suppliers found.")
-        } else {
-            println("Suppliers:")
-            for (supplier in list) {
-                println("${supplier.supplierId}. ${supplier.name} - ${supplier.contact}")
-            }
-        }
-    }
-
-
     fun addSupplieruser(api: SupplierAPI) {
         print("Supplier ID: ")
-        val id = readln().toInt()
+        var id = readln().toInt()
+
+        while (api.supplierIdExists(id)) {
+            println("ID already exists. Enter a different ID:")
+            id = readln().toInt()
+        }
 
         print("Name: ")
         val name = readln()
@@ -34,6 +24,36 @@ class SupplierAPI {
         print("Contact: ")
         val contact = readln()
 
+        val newSupplier = Supplier(id, name, contact)
+        val added = api.addSupplier(newSupplier)
+
+        if (added) {
+            println("Supplier added successfully!")
+        } else {
+            println("Failed to add supplier.")
+        }
+    }
+
+
+    fun getAllSuppliers(): List<Supplier> {return suppliers}
+
+    fun displaySuppliers(list: List<Supplier>) {
+        if (list.isEmpty()) {
+            println("No suppliers found.")
+        } else {
+            println("Suppliers:")
+            val sortedList = list.sortedBy { it.supplierId }
+            for (supplier in sortedList) {
+                println("${supplier.supplierId}. ${supplier.name} - ${supplier.contact}")
+            }
+        }
+    }
+
+    fun supplierIdExists(id: Int): Boolean {
+        for (s in suppliers) {
+            if (s.supplierId == id) return true
+        }
+        return false
     }
 
     fun deleteSupplier(id: Int): Boolean {
