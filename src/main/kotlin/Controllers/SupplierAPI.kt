@@ -1,11 +1,24 @@
 package Controllers
 import models.Supplier
+import persistence.Serializer
 
 
 
-class SupplierAPI {
+class SupplierAPI(
+    private val serializer: Serializer
+) {
+    private var suppliers = ArrayList<Supplier>()
 
-    private val suppliers = ArrayList<Supplier>()
+
+    @Throws(Exception::class)
+    fun store() {
+        serializer.write(suppliers)
+    }
+
+    @Throws(Exception::class)
+    fun load() {
+        suppliers = serializer.read() as ArrayList<Supplier>
+    }
 
     /**
      * @param supplier the supplier to add

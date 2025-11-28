@@ -28,7 +28,7 @@ fun productMenu(productAPI: ProductAPI) {
 
             1 -> productAPI.addProductuser(productAPI)
 
-            2 -> productAPI.displayProducts(productAPI.getAllProducts())
+            2 -> productAPI.displayProducts(productAPI.getAllProducts() as ArrayList<Product>)
 
             3 -> productAPI.displayCheapProducts(productAPI.cheapProduct())
 
@@ -40,7 +40,7 @@ fun productMenu(productAPI: ProductAPI) {
 
             5 -> {
                 println("Enter product ID to delete among those: ")
-                productAPI.displayProducts(productAPI.getAllProducts())
+                productAPI.displayProducts(productAPI.getAllProducts() as ArrayList<Product>)
                 val id = readln().toInt()
                 println(productAPI.deleteProduct(id))
             }
