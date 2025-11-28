@@ -8,14 +8,15 @@ fun supplierMenu(supplierAPI: SupplierAPI, productAPI: ProductAPI) {
     var option: Int
 
     do {
-        println()
-        println("---- SUPPLIER MENU ----")
-        println("1 Add Supplier")
-        println("2 List Suppliers")
-        println("3 Delete Supplier")
-        println("0 Back")
+        println("┌───────────────────────────┐")
+        println("│       SUPPLIER MENU       │")
+        println("├───────────────────────────┤")
+        println("│ 1 → Add Supplier          │")
+        println("│ 2 → List Suppliers        │")
+        println("│ 3 → Delete Supplier       │")
+        println("│ 0 → Back                  │")
+        println("└───────────────────────────┘")
         print("Select option: ")
-
         option = readln().toIntOrNull() ?: -1
 
         when (option) {

@@ -11,14 +11,16 @@ fun productMenu(productAPI: ProductAPI) {
 
     do {
         println()
-        println("---- PRODUCT MENU ----")
-        println("1 Add Product")
-        println("2 List Products")
-        println("3 Cheap Products")
-        println("4 Products by Supplier")
-        println("5 Delete Product")
-        println("0 Back")
-        print("Select option: ")
+        println("┌──────────────────────────┐")
+        println("│       PRODUCT MENU       │")
+        println("├──────────────────────────┤")
+        println("│ 1 → Add Product          │")
+        println("│ 2 → List Products        │")
+        println("│ 3 → Cheap Products       │")
+        println("│ 4 → Products by Supplier │")
+        println("│ 5 → Delete Product       │")
+        println("│ 0 → Back                 │")
+        println("└──────────────────────────┘")
 
         option = readln().toIntOrNull() ?: -1
 

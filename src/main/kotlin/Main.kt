@@ -20,12 +20,14 @@ fun main() {
 
     do {
         println()
-        println("==== MAIN MENU ====")
-        println("1 Supplier Menu")
-        println("2 Product Menu")
-        println("0 Exit")
+        println("┌──────────────────────────┐")
+        println("│        MAIN MENU         │")
+        println("├──────────────────────────┤")
+        println("│ 1 → Supplier Menu        │")
+        println("│ 2 → Product Menu         │")
+        println("│ 0 → Exit                 │")
+        println("└──────────────────────────┘")
         print("Select option: ")
-
         option = readln().toIntOrNull() ?: -1
 
         when(option) {
