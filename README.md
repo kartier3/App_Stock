@@ -79,10 +79,20 @@ Custom serializer framework shows understanding of file handling
 
 
 ## 4. References
+I have read the sections on referencing and plagiarism in the handbook or in the
+WIT Plagiarism policy and I understand that only assignments which are free of
+plagiarism will be awarded marks. I further understand that WIT has a
+plagiarism policy which can lead to the suspension or permanent expulsion of
+students in serious cases (SETU, 2008).
 
 - https://github.com/NaturalIntelligence/fast-xml-parser
+  "amitguptagwl" XML structure viewedd
+
 - https://github.com/matiassingers/awesome-readme/blob/master/readme.md
-- https://www.youtube.com/watch?v=EExSSotojVI
-- https://github.com/Kotlin/kotlinx.serialization
-- https://github.com/Kotlin/dokka
-- https://github.com/Kotlin/dokka-plugin-template
+  "f14XuanLv" massive help with a ReadMe File
+
+- https://www.youtube.com/watch?v=EExSSotojVI Video tutorial, looked for a simple structure
+- https://github.com/Kotlin/kotlinx.serialization "aSemy" Kotling serialization was looked and referenced with changing
+
+- https://github.com/Kotlin/dokka "AbdullinAM" Dokka usage, and commenting
+- https://github.com/Kotlin/dokka-plugin-template "whyoleg" Referenced some plugins
