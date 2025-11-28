@@ -2,13 +2,29 @@ package Controllers
 
 import models.Product
 import java.io.File
-
+/**
+ * Manages all product-related operations in the Stock application.
+ *
+ * @constructor Just a constractor
+ * @property supplierAPI reference to the SupplierAPI for supplier validation
+ */
 class ProductAPI(private val supplierAPI: SupplierAPI) {
 
     private val products = ArrayList<Product>()
 
-
+    /**
+     * Adds a new product to the product list.
+     *
+     * @param product the product to add
+     * @return true if the product was added successfully
+     */
     fun addProduct(product: Product): Boolean {return products.add(product)}
+
+    /**
+     * Adds a new product using user input.
+
+     * @param api
+     */
     fun addProductuser(api: ProductAPI) {
         print("Product ID: ")
         var id = readln().toInt()
@@ -33,7 +49,12 @@ class ProductAPI(private val supplierAPI: SupplierAPI) {
             println("Failed to add product.")
         }
     }
-
+    /**
+     * Checks whether a product with a given ID already exists, just to exclude repetetives
+     *
+     * @param id the product ID to check
+     * @return true or false, ddepends on an existance
+     */
     fun productIdExists(id: Int): Boolean {
         for (p in products) {
             if (p.productId == id) return true
@@ -41,8 +62,13 @@ class ProductAPI(private val supplierAPI: SupplierAPI) {
         return false
     }
 
+    /**
+     * @return a list of all product objects
+     */
     fun getAllProducts(): List<Product> {return products }
-
+    /**
+     * @param list the list of products to display
+     */
     fun displayProducts(list: List<Product>) {
         if (list.isEmpty()) {
             println("No products found.")
@@ -56,7 +82,10 @@ class ProductAPI(private val supplierAPI: SupplierAPI) {
     }
 
 
-
+    /**
+     * Lambda that returns all products costing less than €3.0.
+     * @return a list of cheap products
+     */
     val cheapProduct: () -> List<Product> = {
         val result = mutableListOf<Product>()
         for (product in products) {
@@ -66,6 +95,10 @@ class ProductAPI(private val supplierAPI: SupplierAPI) {
         }
         result
     }
+
+    /**
+     * @param list the list of cheap products to display
+     */
     fun displayCheapProducts(list: List<Product>) {
         if (list.isEmpty()) {
             println("No cheap products (below €3.0).")
@@ -77,6 +110,11 @@ class ProductAPI(private val supplierAPI: SupplierAPI) {
         }
     }
 
+    /**
+     *
+     * @param supplierId the supplier's ID
+     * @return list of products associated with that supplier
+     */
     val productsBySupplier: (Int) -> List<Product> = { supplierId ->
         val result = mutableListOf<Product>()
         for (p in products) {
@@ -86,6 +124,14 @@ class ProductAPI(private val supplierAPI: SupplierAPI) {
         }
         result
     }
+
+    /**
+     * Deletes a product with the given ID.
+     *
+     * @param id the product ID to delete
+     * @return true if a product was deleted, otherwise false
+     * @author Oleh Radzykhovskyi
+     */
     fun deleteProduct(id: Int): Boolean {
         getAllProducts()
         for (product in products) {

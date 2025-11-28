@@ -7,8 +7,14 @@ class SupplierAPI {
 
     private val suppliers = ArrayList<Supplier>()
 
+    /**
+     * @param supplier the supplier to add
+     * @return true if added successfully
+     */
     fun addSupplier(supplier: Supplier): Boolean { return suppliers.add(supplier) }
-
+    /**
+     * @param api SupplierAPI instance for validation
+     */
     fun addSupplieruser(api: SupplierAPI) {
         print("Supplier ID: ")
         var id = readln().toInt()
@@ -34,9 +40,13 @@ class SupplierAPI {
         }
     }
 
-
+    /**
+     * @return list of all suppliers
+     */
     fun getAllSuppliers(): List<Supplier> {return suppliers}
-
+    /**
+     * @param list suppliers to display
+     */
     fun displaySuppliers(list: List<Supplier>) {
         if (list.isEmpty()) {
             println("No suppliers found.")
@@ -48,14 +58,21 @@ class SupplierAPI {
             }
         }
     }
-
+    /**
+     * @param id supplier ID to check
+     * @return true if ID exists
+     */
     fun supplierIdExists(id: Int): Boolean {
         for (s in suppliers) {
             if (s.supplierId == id) return true
         }
         return false
     }
-
+    /**
+     * @param id supplier ID to delete
+     * @return true if deleted successfully
+     * @author Oleh Radzykhovskyi
+     */
     fun deleteSupplier(id: Int): Boolean {
         getAllSuppliers()
         for (supplier in suppliers) {
