@@ -26,6 +26,7 @@ fun main() {
 
     do {
         println()
+        println()
         println("┌──────────────────────────┐")
         println("│        MAIN MENU         │")
         println("├──────────────────────────┤")
