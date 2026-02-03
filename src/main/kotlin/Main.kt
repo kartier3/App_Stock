@@ -25,7 +25,7 @@ fun main() {
     productAPI.addProduct(Product(2, "Beef", 5.0, 2))
 
     do {
-        println()
+        "println()"
         println()
         println("┌──────────────────────────┐")
         println("│        MAIN MENU         │")
